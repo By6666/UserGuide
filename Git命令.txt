@@ -1,0 +1,76 @@
+0、git config --global user.name          //设置或查看用户明或邮箱
+     git config --global user.email
+
+1、git init         //初始化当前目录为Git可管理的仓库
+2、git add <file> //添加文件到暂存区stage
+     git add -A (添加所有)   与 git add . 作用相同   //提交被修改（modified）、被删除（delete）和新文件（new）
+     git add -u //提交被修改（modified）和被删除（delete），但不包括new
+3、git commit -m “message”//把暂存区的所有内容提交到当前分支
+4、git log    //显示从最近到最远的提交日志
+     git log --graphy --pretty=oneline --abbrev-commit //观察合并分支，abbrev是缩写
+5、git log --pretty=oneline//单行显示提交日志
+6、git reflog  //查看命令历史，以便确定要回到未来的哪个版本
+7、git reset --hard  HEAD^ //返回上一个版本
+8、git reset --hard commit_id //返回指定版本
+9、git status //查看当前状态
+     git ls-files //列出当前被追踪的所有文件
+10、git diff HEAD -- <file>  //可以查看工作区和版本库里面最新版本的区别
+
+//**注意一下两者的区别：11是将在工作区的修该撤销；12是将暂存区的修改撤销掉并重新放回工作区
+//**只要将文件进行了修改并点击的保存，则该文件的修改就会被放入工作区，使用git add命令就会将文件的修改放入暂存区，再使用git commit --m “ ” 命令将修改由暂存区放入版本库
+//**如果已经推送到了版本库，那就只能使用git reset --hard HEAD^ 退回上一版本
+11、git checkout -- <file>   //文件在工作区的修改全部撤销（其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。）
+12、git reset HEAD <file>   //把暂存区的修改撤销掉（unstage），重新放回工作区
+       git reset --mixed <commit_id>  //将已经提交的返回到工作区
+       git reset --soft <commit_id>  //将提交返回到stage
+       git reset --hard <commit_id>  //返回到指定的commit
+
+13、git rm <file>   //删除工作区中的文件  删除过后也要进行提交
+//**注：只要修改了工作区的内容都要进行提交
+       git rm -r --cached  //清除本地缓存命令
+
+14、git remote add origin git@<github>.com:<michaelliao/learngit>.git   //同步远程仓库，远程仓库的名字就叫origin
+       git remote set-url --add oginin git@<github>.com:<michaelliao/learngit>.git   //在origin远程仓库下添加一个url
+       git remote rm origin   //删除已有的远程库
+       git push -u origin master          //第一次推送+   -u   ，git push <远程主机名> <本地分支名>:<远程分支名>
+       git push origin --delete <分支名> //删除远程相应的分支
+       git push --all origin                  //将本地的所有分支都推送到远程主机
+       git pull origin master                //下拉                      ，git pull  <主机名> <远程分支名>：<本地分支名>
+
+15、git clone git@<github>.com:<michaelliao/gitskills>.git                    //从远程克隆
+16、 git remote -v      //查看远程信息
+
+17、git branch  //查看分支    git branch -a  //查看包括远程的所有分支
+       git branch <name>    //创建分支
+       git checkout <name> //切换分支到name
+       git checkout -b <name> //创建+切换分支到name
+       git branch -d <name>    //删除分支name
+       git branch -D <name>    //删除丢弃一个没有被合并过的分支name,强行删除
+
+       git merge <name>          //合并name分支到当前分支
+       git merge --no-ff -m "merge with no-ff" <name>  //准备合并dev分支，请注意--no-ff参数，表示禁用Fast forward,使用--no-ff参数，使得此次合并分支会有记录，ff方式没有记录
+                                                                                     //因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去
+18、git rebase     //rebase操作可以把本地未push的分叉提交历史整理成直线
+                          //rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比
+
+19、git tag <tagname>  //用于新建一个标签，默认为HEAD，也可以指定一个commit id
+       git tag -a <tagname> -m "blablabla..."  //可以指定标签信息
+       git tag      //查看所有标签
+       git show <tagname>  //查看标签信息
+       git tag -d <tagname>  //删除相应的标签
+       git push origin <tagname>//推送一个本地标签
+       git push origin --tags         //推送全部未推送过的本地标签
+       git push origin :refs/tags/<tagname>  //删除一个远程标签
+
+20、git rebase -i  [startpoint]  [endpoint] (左开右闭区间)//衍合操作（操作过于繁琐，但可以衍合中间的commit，衍合首端的commit推荐使用12）	   
+	  
+常用别名配置	  
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	unstage = reset HEAD
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	pl = pull --rebase
+                lsf = ls-files
+                bra = branch -a

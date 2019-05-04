@@ -1,0 +1,45 @@
+Linux-CentOS_6
+概念：
+1、操作系统内包含：内核、库、应用程序 ； Windos库：.dll文件 ；Linux库 ：.so文件
+2、原则：一切皆文件，配置文件保存为纯文本格式
+3、接口类型：用户接口（shell）、GUI接口即图形接口（explorer.exe）、CLI接口即命令行接口（CMD、bash）
+4、.bin文件，可执行文件，所有版本的Linuxdoukeyunxing
+
+
+格式：
+命令   -选项....  参数1   参数2 ...
+命令类型：内置命令（help cd）、外部命令（man cd /cd --help）。查看命令类型：type+cmd
+
+
+通用符号说明：
+' * ' -> all ；  ' . ' -> 当前目录 ；  ' .. ' -> 上层目录 ；   ' / ' -> 根目录 ； ' ~ ' -> 当前用户家目录  
+
+常用命令：
+1、echo  打印命令
+2、ls  查看文件信息。  -l  查看长文本信息； -a 显示隐藏信息； -R 递归显示
+3、cd 改变目录
+4、printenv 打印环境变量信息
+5、man  命令手册manual  查看外部命令手册
+6、date 日期
+7、cp 复制 具体查看manual   -r 复制目录
+8、whereis 查看命令文件的所在位置
+9、pwd 查看当前目录
+10、mount / umount  挂载/卸载
+11、mkdir 创建目录   -p 必要时创建上层目录
+12、touch 创建/查看文件  不存在的文件将被创建
+13、rm 删除文件和目录   -f 强制删除； -r 递归删除（删除目录时使用）
+14、scp 网络复制
+15、mv 剪切、重命名文件。语法命令与cp相同
+16、vim 编辑文档
+17、查看文件命令  cat、more、less、tail、head、find、grep
+18、' | ' 管道  将该符号左边命令的执行结果输入到该符号的右边
+19、cut 切割字符串或者文本，   join 链接两个字符串
+20、sort 排序文本
+21、useradd 添加用户，userdel 删除用户，passwd 密码管理，chmod 改变文件的权限，chown 改变文件的owner
+22、ps -aux 查看进程情况，   kill -9 -ID  杀死进程，   top显示进程的实时情况
+23、fdisk 查看磁盘信息    -l 查看长信息
+24、ifconfig 查看网络配置，ping 查看网络是否连通， netstat -ntpl 查看网络情况
+25、tar 压缩/解压     压缩命令格式：tar -zcvf  压缩后名字  被压缩对象；  解压命令：tar -zxvf
+26、rpm 查看相关的安装信息： -qa、-qi、-ql、-qc、-qd； 安装命令：-ivh （安装过程中不需要指定安装路径）
+27、yum （管理.rpm文件） - search 搜索、install 安装、info 信息、repolist 远程库信息；例：yum install mysql-server
+28、tree 查看文档树
