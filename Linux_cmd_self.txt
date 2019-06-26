@@ -43,3 +43,4 @@ Linux-CentOS_6
 26、rpm 查看相关的安装信息： -qa、-qi、-ql、-qc、-qd； 安装命令：-ivh （安装过程中不需要指定安装路径）
 27、yum （管理.rpm文件） - search 搜索、install 安装、info 信息、repolist 远程库信息；例：yum install mysql-server
 28、tree 查看文档树
+29、ubuntu dpkg命令： -l 查询系统安装包，-i 安装.deb文件，-r 删除，--info查询，--status查询本地，--listfiles，--contents

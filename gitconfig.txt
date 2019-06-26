@@ -1,0 +1,19 @@
+[user]
+	name = By
+	email = 1023695613@qq.com
+	
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	cim = commit -m
+	br = branch
+	bra = branch -a
+	lsf = ls-files
+	unstage = reset HEAD
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	pl = pull --rebase
+
+
+[core]
+	autocrlf = false
