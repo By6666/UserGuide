@@ -1,0 +1,90 @@
+VScode安装插件 cmake-format 可以对CMakeList.txt文件进行格式化
+
+内部定义变量：
+PROJECT_NAME  //返回工程名
+PROJECT_BINARY_DIR  //运行Cmake命令的目录
+PROJECT_SOURCE_DIR  //工程根目录
+CMAKE_CXX_COMPILER  //c++编译器
+CMAKE_CXX_FLAGS  //g++设置编译选项
+
+1、CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)  //cmke最小版本要求
+
+2、PROJECT (project_name) //工程名
+   //这个命令会引入两个变量project_name_SOURCE_DIR 与 project_name_BINARY_DIR
+   //这两个变量等价与 PROJECT_BINARY_DIR 与 PROJECT_SOURCE_DIR
+
+3、SET(MAIN_LIST main.cpp) //定义一个变量名  MAIN_LIST = main.cpp
+   SET(MAIN_LIST "${MAIN_LIST} -std=c++11") //定义变量名
+   
+  //显示信息 
+4、MESSAGE([SEND_ERROR | STATUS | FATAL_ERROR] "This is BINARY dir" ${HELLO_BINARY_DIR}) 
+  //向终端输出用户定义的信息或变量的值。
+  //SEND_ERROR, 产生错误,生成过程被跳过
+  //STATUS, 输出前缀为—的信息
+  //FATAL_ERROR, 立即终止所有cmake过程
+
+5、ADD_EXECUTABLE  //生成可执行文件
+   add_executable(<name> [WIN32] [MACOSX_BUNDLE][EXCLUDE_FROM_ALL] source1 [source2 ...])
+   exp：add_executable(bin_file_name ${SRC_LIST})
+   
+6、ADD_LIBRARY  //生成动态或静态链接库
+   add_library(libname [SHARED | STATIC | MODULE] [EXCLUDE_FROM_ALL] SRC_LIST)
+   exp：add_library(shared_demo SHARED ${SRC_LIST})
+   
+7、ADD_SUBDIRECTORY  //添加存放源文件的子目录，并向其中寻找cmakelists.txt
+   add_subdirectory(src_dir [binary_dir] [EXCLUDE_FROM_ALL])
+   EXCLUDE_FROM_ALL含义：将这个目录从编译过程中排除
+   exp：add_subdirectory(${PROJECT_SOURCE_DIR}/src)
+   
+8、AUX_SOURCE_DIRECTORY  //收集指定目录中所有源文件的名称，并赋值给VAR
+   aux_source_directory (dir VAR)
+
+9、INCLUDE_DIRECTORIES  //向工程中添加多个特定的头文件搜索路径，相当于gcc -I xxx
+   exp：include_directories(${PROJECT_SOURCE_DIR}/include)
+   
+10、LINK_DIRECTORIES  //添加非标准的共享库搜索路径，相当于gcc -L xxx
+    exp：link_directories("/opt/MATLAB/R2012a/bin/glnxa64")
+
+11、TARGET_LINK_LIBRARIES  //为target添加需要链接的库文件的名称
+    target_link_libraries(target lib1 lib2 …)
+
+12、LINK_LIBRARIES  //添加需要链接的库文件的路径
+	link_libraries([item1 [item2 [...]]] [[debug|optimized|general] <item>] ...)
+	exp：link_libraries("/opt/MATLAB/R2012a/bin/glnxa64/libeng.so"　"/opt/MATLAB/R2012a/bin/glnxa64/libmx.so")
+
+13、ADD_DEFINITIONS  //向C/C++编译器添加-D定义，参数之间用空格分隔
+	exp: add_definitions(-std=c++11)
+	
+14、ADD_DEPENDENCIES  //定义target依赖的其他target,确保target在构建之前,其依赖的target已经构建完毕
+	add_dependencies (target-name depend-target1 depend-target2 …)
+	
+15、FIND_FILE  //寻找文件，返回文件的全路径(包括文件名)
+	find_file(<VAR> name path1 path2 …)  //path为指定路径
+
+16、FIND_LIBARAY  //寻找库的全路径，必须是已经存在的库
+	find_libaray(<VAR> name path1 path2 …)
+	exp：
+	FIND_LIBRARY(libX X11 /usr/lib)
+	IF (NOT libx)
+		MESSAGE(FATAL_ERROR "libX not found")
+	ENDIF(NOT libX)
+	
+17、FIND_PATH  //寻找路径
+	find_path(<VAR> name path1 path2 …)
+	
+18、FIND_PROGRAM  //寻找包含程序的全路径
+	find_program(<VAR> name path1 path2 …)
+	
+19、FIND_PACKAGE  //寻找package
+	find_package(<name> [major.minor] [QUIET] [NO_MODULE] [[REQUIRED | COMPONENTS] [componets …]])
+	
+20、EXEC_PROGRAM  //在指定目录运行指定Ubuntu命令
+	exec_program(Executable [dir where to run] [ARGS <args>][OUTPUT_VARIABLE <var>] [RETURN_VALUE <value>])
+	exp：
+	# 在src中运行ls命令,在src/CMakeLists.txt添加
+	exec_program(ls ARGS "*.c" OUTPUT_VARIABLE LS_OUTPUT RETURN_VALUE LS_RVALUE)
+	IF (not LS_RVALUE)
+		MESSAGE(STATUS "ls result: " ${LS_OUTPUT}) # 缩进仅为美观,语法无要求
+	ENDIF(not LS_RVALUE)
+
+	
