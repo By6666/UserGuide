@@ -1,14 +1,14 @@
-  1 set number
-  2 set autoindent
-  3 set cindent
-  4 set smartindent
-  5 set nocompatible
-  6 set showmatch
-  7 set ruler
-  8 set nobackup
-  9 set clipboard+=unnamed
- 10 set shiftwidth=4
- 11 set tabstop=4
- 12 set softtabstop=4
- 13 set incsearch
- 14 set scrolloff=3
+set number
+set autoindent
+set cindent
+set smartindent
+set nocompatible
+set showmatch
+set ruler
+set nobackup
+set clipboard+=unnamed
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set incsearch
+set scrolloff=3

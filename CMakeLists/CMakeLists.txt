@@ -63,6 +63,7 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/include)
 # 获得所有source文件
 set(SRC_LIST main.cpp)
 
+# 相当于g++ -L命令，目的告诉g++编译器，这个path中有需要的库
 link_directories(${PROJECT_SOURCE_DIR}/lib)
 
 add_executable(${OUTPUT_NAME} ${SRC_LIST})
@@ -72,7 +73,8 @@ target_link_libraries(${OUTPUT_NAME} ${OpenCV_LIBS} self)
 # 多目录工程，一般将每一个子目录编译为静态或者动态链接库，以供主目录调用
 aux_source_directory(${PROJECT_SOURCE_DIR}/include CUR_LIST)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+# 相当于g++ -I命令，目的让g++编译的时候找到头文件
+include_directories(${PROJECT_SOURCE_DIR}/include)  
 
 add_library(self ${CUR_LIST})
 
