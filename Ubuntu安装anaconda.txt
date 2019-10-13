@@ -1,0 +1,13 @@
+1、Ubuntu 16.04 自带python2.7 & python3.5
+
+2、anaconda中含有python，只安装anaconda最新版本即可
+
+3、不要改变系统中原有的python的链接(/usr/bin下的)，
+   可能是因为系统中很多快捷程序都使用python编写，随意改变链接会导致系统崩溃。
+   例如：Ubuntu桌面无法打开，crtl+alt+t快捷键无法打开终端等等
+   
+4、安装时不要将anaconda的bin文件路径告诉系统(不要在.bashrc文件中添加其bin文件夹的地址)，
+   因为anaconda安装过后会在其安装目录的bin文件夹下创建很多系统已经有的链接，正是这些同名的链接
+   会导致系统崩溃
+   
+5、安装完anaconda后，只需在/usr/bin下创建python3.7、conda、jupyter的链接即可
