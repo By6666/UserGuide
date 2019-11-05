@@ -1,0 +1,6 @@
+1、python3.6 (using anaconda3 5.3.1)
+2、CUDA 9.0
+3、CUDNN 7.4.1.5 (all 7.x version are working)
+4、Tensorflow-gpu 1.12.0
+5、Keras 2.2.4
+6、Numpy 1.16.4
