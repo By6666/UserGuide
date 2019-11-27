@@ -1,0 +1,27 @@
+1.在vscode上配置ROS环境
+  安装ROS插件
+  运行catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=Yes命令
+  在c_cpp_properties.json文件中添加"compileCommands": "${workspaceFolder}/build/compile_commands.json"
+
+2.创建一个ros package，catkin_create_pkg pkg_name roscpp rospy std_msgs
+
+3.自定义msg需要设置相应pkg中的package.xml，添加如下：
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  CMakeLists.txt修改如下：
+  find_package(catkin REQUIRED COMPONENTS roscpp std_msgs message_generation) 注意：这是添加catkin需要的pkg
+  add_message_files(FILES name.msg)
+  generate_messages(DEPENDENCIES std_msgs)
+  catkin_package( CATKIN_DEPENDS roscpp std_msgs message_runtime)
+
+4.topic使用
+  publisher：查看topic_test教程
+  Subscriber: 同上
+
+5.srv消息类型
+  中间使用---隔开，上半部分是request，下半部分是respone
+
+6.service使用
+  ServiceClient：查看service_test教程
+  ServiceServer：同上
+  注意：使用时必须保证两者的模板类型相同，否则会产生通信错误
