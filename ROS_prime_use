@@ -25,3 +25,8 @@
   ServiceClient：查看service_test教程
   ServiceServer：同上
   注意：使用时必须保证两者的模板类型相同，否则会产生通信错误
+
+7.ros::NodeHandle若在创建时传入参数,则表示特定name的nodehandle,详情参考http://wiki.ros.org/action/fullsearch/roscpp/Overview/NodeHandles?action=fullsearch&context=180&value=linkto%3A%22roscpp%2FOverview%2FNodeHandles%22
+
+
+8.使用vscode编写python ros时,自定义msg找不到解决方案, 在setting.json文件中添加  "python.jediEnabled": false 命令
