@@ -1,4 +1,4 @@
-1.在vscode上配置ROS环境
+1.在vscode上配置ROS环境 (可使用vscode-insider版本完全解决ros配置问题)
   安装ROS插件
   运行catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=Yes命令
   在c_cpp_properties.json文件中添加"compileCommands": "${workspaceFolder}/build/compile_commands.json"
@@ -29,4 +29,10 @@
 7.ros::NodeHandle若在创建时传入参数,则表示特定name的nodehandle,详情参考http://wiki.ros.org/action/fullsearch/roscpp/Overview/NodeHandles?action=fullsearch&context=180&value=linkto%3A%22roscpp%2FOverview%2FNodeHandles%22
 
 
-8.使用vscode编写python ros时,自定义msg找不到解决方案, 在setting.json文件中添加  "python.jediEnabled": false 命令
+8.使用vscode编写python ros时,自定义msg找不到解决方案, 在setting.json文件中添加  "python.jediEnabled": true 命令; 注意:使用Python ros时, scripts文件中的.py文件不能与ros pkg重名
+
+9.ros python 编程, 第一行需添加 #!/usr/bin/env python3 意为 选择编译程序的编译器
+
+10.运行Python节点, ①python3 + file_name; ②(推荐) 将file chmod 755 为可执行文件, 然后 rosrun pkg_name file_name
+
+11.引同一工作空间下的其他包中的.h文件 https://blog.csdn.net/weixin_43651761/article/details/85557291
