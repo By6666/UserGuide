@@ -36,3 +36,8 @@
 10.运行Python节点, ①python3 + file_name; ②(推荐) 将file chmod 755 为可执行文件, 然后 rosrun pkg_name file_name
 
 11.引同一工作空间下的其他包中的.h文件 https://blog.csdn.net/weixin_43651761/article/details/85557291
+
+12.关于ros CMakeLists.txt文件的几个选项含义:
+   catkin_package()选项中目的是告诉catkin_workspace, 在当前pkg中有include..., 相当于向外公布,以便于其他的pkg使用当前pkg中的.h或者其他
+   include_directories(include  ${catkin_INCLUDE_DIRS})是针对与当前pkg的, 其目的是告诉当前的pkg,所需要的.h以及其他所在的位置, 选项中的'include'是指当前pkg中的include文件夹, ${catkin_INCLUDE_DIRS}指的是catkin_workspace中的.h
+   
