@@ -27,3 +27,22 @@
     >> wechart | Social-contact | for communication
     >> terminator | \ | for linux
     >> System-monitor | \ | for cup & mem
+
+> ## [常用命令]
+> **查找**
+    >> 1. find \<path> [-name|-type] [pattern] | grep/-exec
+    >> 2. grep -rn \<pattern> <path|file>
+>
+> **压缩**
+    >> 1. tar 
+    >> * 压缩: tar zxvf 压缩包名字.tar.gz [-C 解压path] 
+    >> * 解压: tar zcvf 压缩包名字 压缩对象...
+    >>
+    >> 2. rar
+    >> * 压缩: rar a 压缩包名字 压缩对象 [-r:压缩目录]
+    >> * 解压: rar x 压缩包名字 指定目录
+    >>
+    >> 3. zip
+    >> * 压缩: zip 压缩包名字 压缩对象 [-r:压缩目录]
+    >> * 解压: unzip 压缩包名字 [-d:解压目录]
+     
