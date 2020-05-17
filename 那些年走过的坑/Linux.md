@@ -28,6 +28,27 @@
     >> terminator | \ | for linux
     >> System-monitor | \ | for cup & mem
 
+> **python安装**
+    >> ubuntu 16.04 自带 python2.7、python3.5, 可以安装其他版本的python，但切忌不要更改原系统中python2、python3的链接，否则将会出现系统无法运行的现象
+    >> 
+    >> 安装python3.7
+        >>> * sudo apt-get install software-properties-common
+        >>> * sudo add-apt-repository ppa:deadsnakes/ppa
+        >>> * sudo apt update
+        >>> * sudo apt install -y python3.7
+    >>
+    >> 管理pip版本
+        >>> * curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        >>> * python[版本号] get-pip.py (此命令可获得最新的pip版本)
+    >>
+    >> jupyter的安装
+        >>> * pip[版本号] install jupyter
+        >>> * jupyter添加内核  使用jupyter-kernelspec [install | list] 命令 (具体操作需要baidu)
+    >>
+    >> jupyter的完全卸载
+        >>> * python3 -m pip uninstall -y jupyter jupyter_core jupyter-client jupyter-console notebook qtconsole nbconvert nbformat
+
+
 > ## [常用命令]
 > **查找**
     >> 1. find \<path> [-name|-type] [pattern] | grep/-exec
