@@ -1,0 +1,18 @@
+---
+BasedOnStyle: Google
+---
+Language:                               Cpp
+Cpp11BracedListStyle:                   true
+Standard:                               Cpp11
+CommentPragmas: '^ NOLINT'
+ColumnLimit: 100
+AccessModifierOffset: -1
+IndentWidth: 2
+UseTab: Never
+DerivePointerAlignment: false
+PointerAlignment: Left
+---
+
+
+注：将此文件改名为.clang-format, 保存在用户根目录下，并删除此行
+vscode中，须配置：设置 -> 扩展 -> C/C++ -> C_Cpp:Clang_format_style中修改为file
